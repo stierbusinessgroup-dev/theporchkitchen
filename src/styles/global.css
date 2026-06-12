@@ -7,17 +7,28 @@
    ============================================================ */
 
 :root {
-  --cream: #f2e7d2;
-  --paper: #f7eedb;
-  --ink: #241f18;
-  --muted: #6e6450;
-  --sage: #515b33;
-  --sage-dk: #363e20;
-  --clay: #9f4625;
-  --gold: #b0822f;
-  --wine: #5e2230;
-  --wine-lt: #7c2e3c;
-  --line: #dbcba9;
+  /* Monochrome palette modeled on yangskitchenla.com: near-white ground,
+     warm-charcoal text, hairline rules, NO accent color — the photography
+     carries all the color. */
+  --bg: #fffefa;        /* page ground (off-white, a whisper warm) */
+  --panel: #f3f2ee;     /* alternating section panel (neutral light) */
+  --ink: #2d2926;       /* primary text (warm charcoal) */
+  --ink-strong: #100f0d;
+  --muted: #76716a;     /* secondary text */
+  --line: rgba(0, 0, 0, 0.13); /* hairline dividers */
+  --dark: #211e1b;      /* charcoal anchor (order band, footer) */
+
+  /* Legacy accent names repointed to monochrome so existing component
+     styles render neutral without per-rule edits. */
+  --cream: #fffefa;
+  --paper: #f3f2ee;
+  --sage: #2d2926;
+  --sage-dk: #100f0d;
+  --clay: #2d2926;
+  --gold: #76716a;
+  --wine: #211e1b;
+  --wine-lt: #2d2926;
+
   --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --sans: "Inter", -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --maxw: 1120px;
@@ -113,9 +124,9 @@ section {
 .eyebrow {
   font-family: var(--sans);
   font-size: 0.72rem;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--clay);
+  color: var(--muted);
   font-weight: 600;
 }
 
@@ -137,85 +148,63 @@ section {
 .btn {
   display: inline-block;
   font-family: var(--sans);
-  font-size: 0.82rem;
-  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  font-weight: 600;
-  padding: 14px 26px;
-  border-radius: 2px;
+  font-weight: 500;
+  padding: 15px 28px;
+  border-radius: 0;
   transition: 0.18s;
   cursor: pointer;
-  border: 1.5px solid transparent;
+  border: 1px solid transparent;
 }
+/* Primary: solid charcoal. */
 .btn-solid {
-  background: var(--sage);
-  color: #fff;
+  background: var(--ink);
+  color: var(--bg);
 }
 .btn-solid:hover {
-  background: var(--sage-dk);
+  background: var(--ink-strong);
 }
+/* Secondary: thin charcoal outline, transparent fill (Yang's signature). */
 .btn-ghost {
   border-color: var(--ink);
   color: var(--ink);
 }
 .btn-ghost:hover {
   background: var(--ink);
-  color: var(--cream);
+  color: var(--bg);
 }
+/* Alias kept for existing markup — now identical to the primary. */
 .btn-clay {
-  background: var(--clay);
-  color: #fff;
+  background: var(--ink);
+  color: var(--bg);
 }
 .btn-clay:hover {
-  filter: brightness(0.92);
+  background: var(--ink-strong);
 }
+/* On dark sections. */
 .btn-light {
-  background: #fff;
-  color: var(--sage-dk);
+  background: var(--bg);
+  color: var(--ink);
 }
 .btn-light:hover {
-  background: #f3ead8;
+  background: #ece9e3;
 }
 .btn-on-dark {
-  border-color: #fff;
+  border-color: rgba(255, 255, 255, 0.7);
   color: #fff;
 }
 .btn-on-dark:hover {
   background: #fff;
   color: var(--ink);
+  border-color: #fff;
 }
 
 .cta-row {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
-}
-
-/* ── Shared texture (faint herb pattern over warm sections) ── */
-.has-tex {
-  position: relative;
-}
-.has-tex > .wrap,
-.has-tex > .section-head {
-  position: relative;
-  z-index: 1;
-}
-.tex {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Reclaimed-wood backdrop for dark sections. */
-.wood {
-  background-color: #2c2116;
-  background-image: linear-gradient(90deg, #281f13, #36291a 26%, #2b2115 50%, #3a2d1c 76%, #251d11),
-    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.24) 0 1px, transparent 1px 6px),
-    repeating-linear-gradient(90deg, rgba(255, 236, 210, 0.045) 0 1px, transparent 1px 15px),
-    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.12) 0 2px, transparent 2px 41px);
 }
 
 @media (max-width: 700px) {

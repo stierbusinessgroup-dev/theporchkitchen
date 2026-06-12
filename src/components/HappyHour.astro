@@ -63,18 +63,19 @@ const drinkSections = happyHourMenu.sections.filter((s) => s.title !== 'Small Bi
 
 <style>
   .happy {
-    background: linear-gradient(135deg, var(--wine), var(--wine-lt));
-    color: #f5ece0;
+    background: var(--panel);
+    color: var(--ink);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
   }
   .happy .section-head h2 {
-    color: #fff;
+    color: var(--ink);
   }
   .happy .section-head p {
-    color: #f0e2d6;
-    opacity: 0.92;
+    color: var(--muted);
   }
   .hh-eyebrow {
-    color: #f3d9a8;
+    color: var(--muted);
   }
   .hh-grid {
     display: grid;
@@ -86,13 +87,13 @@ const drinkSections = happyHourMenu.sections.filter((s) => s.title !== 'Small Bi
   .bites h3,
   .drinks h3 {
     font-size: 1.4rem;
-    color: #fff;
+    color: var(--ink);
     margin-bottom: 14px;
     display: flex;
     align-items: baseline;
     justify-content: space-between;
     gap: 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    border-bottom: 1px solid var(--line);
     padding-bottom: 8px;
   }
   .hh-item {
@@ -100,23 +101,22 @@ const drinkSections = happyHourMenu.sections.filter((s) => s.title !== 'Small Bi
     justify-content: space-between;
     gap: 16px;
     padding: 10px 0;
-    border-bottom: 1px dotted rgba(255, 255, 255, 0.16);
+    border-bottom: 1px dotted var(--line);
   }
   .nm-line {
     font-weight: 400;
-    color: #fff;
+    color: var(--ink);
   }
   .hh-nm small {
     display: block;
-    color: #e8d6c8;
+    color: var(--muted);
     font-size: 0.82rem;
-    opacity: 0.8;
     margin-top: 3px;
   }
   .hh-pr {
     font-family: var(--serif);
-    font-size: 1.2rem;
-    color: var(--gold);
+    font-size: 1.25rem;
+    color: var(--ink);
     white-space: nowrap;
   }
   .drink-block {
@@ -124,29 +124,28 @@ const drinkSections = happyHourMenu.sections.filter((s) => s.title !== 'Small Bi
   }
   .dprice {
     font-family: var(--serif);
-    color: var(--gold);
-    font-size: 1.2rem;
+    color: var(--ink);
+    font-size: 1.25rem;
   }
   .drinks ul {
     list-style: none;
   }
   .drinks li {
     padding: 6px 0;
-    color: #f0e2d6;
+    color: var(--ink);
   }
   .hh-fine {
     font-size: 0.82rem;
     font-style: italic;
-    opacity: 0.7;
-    color: #e8d6c8;
+    color: var(--muted);
   }
   .tag {
     font-size: 0.6rem;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     font-weight: 600;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    color: #f3d9a8;
+    border: 1px solid var(--line);
+    color: var(--muted);
     border-radius: 2px;
     padding: 1px 4px;
     margin-left: 6px;
