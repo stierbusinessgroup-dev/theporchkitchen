@@ -1,0 +1,112 @@
+---
+import { Image } from 'astro:assets';
+import { site } from '../data/site';
+import heroImg from '../assets/hero-dining.jpg';
+---
+
+<section class="hero" id="top">
+  <Image
+    src={heroImg}
+    alt="The dining room at The Porch Kitchen in Sebastopol"
+    class="hero-img"
+    widths={[768, 1280, 1920]}
+    sizes="100vw"
+    loading="eager"
+    fetchpriority="high"
+  />
+  <div class="hero-overlay"></div>
+  <div class="wrap hero-content">
+    <p class="eyebrow hero-eyebrow">Sebastopol · Sonoma Wine Country</p>
+    <h1>The Porch Kitchen</h1>
+    <p class="tag">{site.tagline}</p>
+    <p class="meta">
+      <span>🍴 Lunch · Happy Hour · Dinner</span>
+      <span class="sep">·</span>
+      <span>🥂 Draft Beer &amp; Local Wine</span>
+      <span class="sep">·</span>
+      <span>📍 {site.address.street}</span>
+    </p>
+    <div class="cta-row hero-cta">
+      <a class="btn btn-clay" href={site.toastOrderUrl} target="_blank" rel="noopener">
+        Order Online
+      </a>
+      <a class="btn btn-on-dark" href="/menu">View Menu</a>
+      <a class="btn btn-on-dark" href="/#visit">Visit Us</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 580px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    overflow: hidden;
+  }
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(180deg, rgba(34, 32, 26, 0.5), rgba(34, 32, 26, 0.7));
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+  .hero-eyebrow {
+    color: #f3d9a8;
+  }
+  .hero h1 {
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    margin: 14px 0 6px;
+    letter-spacing: 0.01em;
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.3);
+  }
+  .tag {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.2rem, 2.6vw, 1.7rem);
+    color: #f4efe4;
+    opacity: 0.96;
+  }
+  .meta {
+    margin: 22px 0 28px;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    color: #efe9dc;
+  }
+  .meta span {
+    margin: 0 8px;
+    white-space: nowrap;
+    display: inline-block;
+  }
+  .meta .sep {
+    opacity: 0.5;
+  }
+  .hero-cta {
+    justify-content: center;
+  }
+  @media (max-width: 600px) {
+    .meta .sep {
+      display: none;
+    }
+    .meta span {
+      display: block;
+      margin: 6px 0;
+    }
+  }
+</style>

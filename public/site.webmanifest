@@ -1,0 +1,14 @@
+{
+  "name": "The Porch Kitchen",
+  "short_name": "Porch Kitchen",
+  "description": "Farm-fresh California lunch, happy hour & dinner in Sebastopol.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f2e7d2",
+  "theme_color": "#363e20",
+  "icons": [
+    { "src": "/favicon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/favicon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/favicon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

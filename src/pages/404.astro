@@ -1,0 +1,53 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../data/site';
+---
+
+<Base
+  title="Page Not Found — The Porch Kitchen"
+  description="The page you were looking for isn't here. Head back to The Porch Kitchen home."
+  path="/404"
+  noindex
+  includeMenu={false}
+>
+  <Nav slot="header" />
+  <section class="nf">
+    <div class="wrap">
+      <p class="eyebrow">404</p>
+      <h1>This plate's empty.</h1>
+      <p class="lede">
+        The page you're after isn't on the menu. Let's get you back to the good stuff.
+      </p>
+      <div class="cta-row nf-cta">
+        <a class="btn btn-solid" href="/">Back Home</a>
+        <a class="btn btn-ghost" href="/menu">View the Menu</a>
+        <a class="btn btn-ghost" href={site.toastOrderUrl} target="_blank" rel="noopener">
+          Order Online
+        </a>
+      </div>
+    </div>
+  </section>
+  <Footer slot="footer" />
+</Base>
+
+<style>
+  .nf {
+    text-align: center;
+    padding: 120px 0;
+  }
+  .nf h1 {
+    font-size: clamp(2.4rem, 6vw, 3.6rem);
+    margin: 10px 0 14px;
+  }
+  .lede {
+    color: var(--muted);
+    font-size: 1.1rem;
+    max-width: 460px;
+    margin: 0 auto 28px;
+  }
+  .nf-cta {
+    justify-content: center;
+  }
+</style>

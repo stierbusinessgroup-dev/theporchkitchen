@@ -1,0 +1,27 @@
+---
+// Faint hand-drawn herb-sprig texture for warm sections. Self-contained SVG
+// (its own pattern def) so it can be dropped into any .has-tex section.
+const uid = 'herb-' + Math.random().toString(36).slice(2, 8);
+---
+
+<svg class="tex" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+  <defs>
+    <pattern id={uid} width="188" height="188" patternUnits="userSpaceOnUse" patternTransform="rotate(7)">
+      <g fill="none" stroke="#515B33" stroke-opacity=".15" stroke-width="1.2" stroke-linecap="round">
+        <path d="M34 160 C 54 122 60 94 70 52"></path>
+        <path d="M70 52 L70 38"></path>
+      </g>
+      <g fill="#515B33" fill-opacity=".12">
+        <ellipse cx="46" cy="130" rx="10" ry="3.4" transform="rotate(40 46 130)"></ellipse>
+        <ellipse cx="58" cy="122" rx="10" ry="3.4" transform="rotate(-28 58 122)"></ellipse>
+        <ellipse cx="52" cy="108" rx="10" ry="3.4" transform="rotate(44 52 108)"></ellipse>
+        <ellipse cx="64" cy="100" rx="10" ry="3.4" transform="rotate(-24 64 100)"></ellipse>
+        <ellipse cx="60" cy="84" rx="9" ry="3.2" transform="rotate(46 60 84)"></ellipse>
+        <ellipse cx="70" cy="76" rx="9" ry="3.2" transform="rotate(-22 70 76)"></ellipse>
+        <ellipse cx="66" cy="60" rx="8" ry="3" transform="rotate(48 66 60)"></ellipse>
+        <ellipse cx="73" cy="52" rx="8" ry="3" transform="rotate(-20 73 52)"></ellipse>
+      </g>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill={`url(#${uid})`}></rect>
+</svg>

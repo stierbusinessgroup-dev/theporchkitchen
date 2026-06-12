@@ -1,0 +1,57 @@
+---
+// Per-page <head> SEO: title, description, canonical, Open Graph, Twitter card.
+import { site } from '../data/site';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Path only, e.g. "/menu". Defaults to current page. */
+  path?: string;
+  /** OG image path relative to site root. */
+  image?: string;
+  type?: 'website' | 'article' | 'restaurant';
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  path = Astro.url.pathname,
+  image = '/og-image.jpg',
+  type = 'website',
+  noindex = false,
+} = Astro.props;
+
+const base = Astro.site ?? new URL(site.url);
+const canonical = new URL(path === '/' ? '' : path.replace(/^\//, ''), base).href.replace(/\/$/, '') || base.href;
+const imageUrl = new URL(image.replace(/^\//, ''), base).href;
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+
+<!-- Open Graph -->
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content={site.name} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={imageUrl} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={`${site.name} — ${site.tagline}`} />
+<meta property="og:locale" content="en_US" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageUrl} />
+
+<!-- Geo hints for local search -->
+<meta name="geo.region" content="US-CA" />
+<meta name="geo.placename" content="Sebastopol, California" />
+<meta name="geo.position" content={`${site.geo.lat};${site.geo.lng}`} />
+<meta name="ICBM" content={`${site.geo.lat}, ${site.geo.lng}`} />

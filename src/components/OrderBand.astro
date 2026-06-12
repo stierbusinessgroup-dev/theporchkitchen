@@ -1,0 +1,44 @@
+---
+import { site } from '../data/site';
+---
+
+<section class="band">
+  <div class="wrap">
+    <p class="eyebrow band-eyebrow">Lunch to go</p>
+    <h2>Order ahead — commission-free</h2>
+    <p>
+      Grab your favorites on the way through Sebastopol. Online orders go straight to the kitchen
+      through Toast, so more goes to the people who made your food.
+    </p>
+    <div class="cta-row band-cta">
+      <a class="btn btn-light" href={site.toastOrderUrl} target="_blank" rel="noopener">
+        Order Online
+      </a>
+      <a class="btn btn-on-dark" href="/menu">View the Menu</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .band {
+    background: linear-gradient(135deg, var(--sage), var(--sage-dk));
+    color: #f1ece0;
+    text-align: center;
+  }
+  .band-eyebrow {
+    color: #f3d9a8;
+  }
+  .band h2 {
+    color: #fff;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    margin: 10px 0;
+  }
+  .band p {
+    opacity: 0.9;
+    max-width: 560px;
+    margin: 0 auto 26px;
+  }
+  .band-cta {
+    justify-content: center;
+  }
+</style>

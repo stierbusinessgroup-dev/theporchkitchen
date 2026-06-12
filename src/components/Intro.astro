@@ -1,0 +1,77 @@
+---
+import { Image } from 'astro:assets';
+import { site } from '../data/site';
+import Texture from './Texture.astro';
+import introImg from '../assets/family-style.jpg';
+---
+
+<section class="intro has-tex">
+  <Texture />
+  <div class="wrap">
+    <div class="intro-copy">
+      <p class="eyebrow">Welcome to the table</p>
+      <h2>Every detail, made by hand.</h2>
+      <p>
+        From the team behind <a href={site.parentUrl} target="_blank" rel="noopener"><strong
+            >The Cook &amp; The Drummer</strong
+          ></a> — Sonoma County's beloved catering company — comes The Porch Kitchen, a neighborhood
+        restaurant in the heart of Sebastopol. Chef <strong>Lisa Boisset</strong> brings twenty years
+        and Le Cordon Bleu training to a menu that's seasonal, local, and genuinely from scratch:
+        she roasts her own turkey, bakes the focaccia, and makes every vinaigrette, stock, and aioli
+        in house. No mayonnaise, no shortcuts — just high-quality ingredients.
+      </p>
+      <p>
+        Come for a bright lunch, linger over happy hour with a glass of local wine, or stay for
+        dinner on the porch.
+      </p>
+    </div>
+    <Image
+      src={introImg}
+      alt="A family-style spread of seasonal dishes from The Porch Kitchen"
+      class="intro-img"
+      widths={[480, 720, 960]}
+      sizes="(max-width: 820px) 100vw, 50vw"
+      loading="lazy"
+    />
+  </div>
+</section>
+
+<style>
+  .intro {
+    background: var(--paper);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .intro .wrap {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 54px;
+    align-items: center;
+  }
+  .intro h2 {
+    font-size: 2.4rem;
+    margin: 10px 0 18px;
+  }
+  .intro-copy p {
+    font-size: 1.12rem;
+    color: #42402f;
+    margin-bottom: 16px;
+  }
+  .intro-copy a {
+    text-decoration: underline;
+    text-decoration-color: var(--line);
+    text-underline-offset: 3px;
+  }
+  .intro-img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 3px;
+  }
+  @media (max-width: 820px) {
+    .intro .wrap {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+</style>

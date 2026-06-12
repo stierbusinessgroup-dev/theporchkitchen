@@ -1,0 +1,147 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import MenuList from '../components/MenuList.astro';
+import Texture from '../components/Texture.astro';
+import { site } from '../data/site';
+import { lunchMenu, happyHourMenu, DIET_LABELS } from '../data/menu';
+
+const legend = Object.entries(DIET_LABELS) as [keyof typeof DIET_LABELS, string][];
+---
+
+<Base
+  title="Menu — The Porch Kitchen, Sebastopol"
+  description="The full menu at The Porch Kitchen in Sebastopol: house-made French-style sandwiches, artisan salads, nourishing grain bowls, sweets, and a Tuesday–Saturday happy hour with small bites, draft beer and local wine."
+  path="/menu"
+  breadcrumbs={[{ name: 'Menu', path: '/menu' }]}
+>
+  <Nav slot="header" />
+
+  <header class="menu-hero has-tex">
+    <Texture />
+    <div class="wrap">
+      <p class="eyebrow">Seasonal &amp; made by hand</p>
+      <h1>The Menu</h1>
+      <p class="lede">
+        Everything from scratch — Lisa roasts her own turkey, bakes the focaccia, and makes every
+        vinaigrette, stock, and aioli in house. Menus rotate with the season and the farmers'
+        market.
+      </p>
+      <div class="cta-row menu-hero-cta">
+        <a class="btn btn-solid" href={site.toastOrderUrl} target="_blank" rel="noopener">
+          Order Online
+        </a>
+        <a class="btn btn-ghost" href="/#visit">Hours &amp; Location</a>
+      </div>
+      <ul class="legend">
+        {legend.map(([k, v]) => <li><abbr class={`tag tag-${k}`}>{k}</abbr> {v}</li>)}
+      </ul>
+    </div>
+  </header>
+
+  <section class="menu-body">
+    <div class="wrap">
+      <h2 class="menu-title">{lunchMenu.title}</h2>
+      <MenuList menu={lunchMenu} showServed />
+    </div>
+  </section>
+
+  <section class="menu-body alt">
+    <div class="wrap">
+      <h2 class="menu-title">{happyHourMenu.title}</h2>
+      <MenuList menu={happyHourMenu} showServed />
+    </div>
+  </section>
+
+  <section class="menu-foot">
+    <div class="wrap">
+      <p>Vegetarian, vegan &amp; gluten-free options at every course.</p>
+      <a class="btn btn-solid" href={site.toastOrderUrl} target="_blank" rel="noopener">
+        Order Online
+      </a>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Base>
+
+<style>
+  .menu-hero {
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    padding: 70px 0 56px;
+    text-align: center;
+  }
+  .menu-hero h1 {
+    font-size: clamp(2.4rem, 5vw, 3.4rem);
+    margin: 10px 0 16px;
+  }
+  .lede {
+    max-width: 620px;
+    margin: 0 auto;
+    color: var(--muted);
+    font-size: 1.08rem;
+  }
+  .menu-hero-cta {
+    justify-content: center;
+    margin-top: 26px;
+  }
+  .legend {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+  .legend li {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .menu-body {
+    padding: 64px 0;
+    background: var(--cream);
+  }
+  .menu-body.alt {
+    background: var(--paper);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .menu-title {
+    text-align: center;
+    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+    color: var(--sage-dk);
+    margin-bottom: 6px;
+  }
+  .menu-foot {
+    text-align: center;
+    padding: 56px 0;
+    background: var(--cream);
+  }
+  .menu-foot p {
+    font-style: italic;
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    color: var(--sage-dk);
+    margin-bottom: 24px;
+  }
+  .tag {
+    font-size: 0.62rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-weight: 600;
+    border: 1px solid var(--sage);
+    color: var(--sage);
+    border-radius: 2px;
+    padding: 1px 5px;
+    text-decoration: none;
+  }
+  .tag-s {
+    border-color: var(--clay);
+    color: var(--clay);
+  }
+</style>

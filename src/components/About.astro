@@ -1,0 +1,102 @@
+---
+import { Image } from 'astro:assets';
+import Texture from './Texture.astro';
+import lisaImg from '../assets/chef-lisa.jpg';
+import kevinImg from '../assets/kevin.jpg';
+---
+
+<section class="about has-tex" id="about">
+  <Texture />
+  <div class="section-head">
+    <p class="eyebrow">The Cook &amp; The Drummer</p>
+    <h2>Meet Lisa &amp; Kevin</h2>
+    <p>
+      A husband-and-wife team — a chef and a drummer — who built a Sonoma County institution on
+      great food and good music.
+    </p>
+  </div>
+  <div class="wrap">
+    <div class="duo">
+      <article class="card">
+        <Image
+          src={lisaImg}
+          alt="Chef Lisa Boisset of The Porch Kitchen"
+          class="portrait"
+          widths={[230, 460]}
+          sizes="230px"
+          loading="lazy"
+        />
+        <h3>Chef Lisa Boisset</h3>
+        <p class="role">The Cook</p>
+        <p>
+          Trained at the California Culinary Academy and Le Cordon Bleu, Paris, with twenty years as
+          an executive chef. Her cooking is French at the roots, Californian on the plate, and
+          farm-fresh always — everything made from scratch, down to the stocks and aiolis.
+        </p>
+      </article>
+      <article class="card">
+        <Image
+          src={kevinImg}
+          alt="Kevin Boisset, the drummer of The Cook & The Drummer"
+          class="portrait"
+          widths={[230, 460]}
+          sizes="230px"
+          loading="lazy"
+        />
+        <h3>Kevin Boisset</h3>
+        <p class="role">The Drummer</p>
+        <p>
+          A Paris-born jazz drummer playing since age nine, Kevin runs the room and brings the North
+          Bay's best musicians to their events — because a great meal deserves a great soundtrack.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    background: var(--paper);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .duo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 10px;
+  }
+  .card {
+    text-align: center;
+  }
+  .portrait {
+    width: 230px;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0 auto 18px;
+  }
+  .duo h3 {
+    font-size: 1.7rem;
+  }
+  .role {
+    color: var(--clay);
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 4px 0 12px;
+  }
+  .card p:not(.role) {
+    color: var(--muted);
+    font-size: 0.98rem;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+  @media (max-width: 680px) {
+    .duo {
+      grid-template-columns: 1fr;
+      gap: 46px;
+    }
+  }
+</style>

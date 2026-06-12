@@ -1,0 +1,163 @@
+---
+import { happyHourMenu, DIET_LABELS } from '../data/menu';
+import { site } from '../data/site';
+
+const smallBites = happyHourMenu.sections.find((s) => s.title === 'Small Bites');
+const drinkSections = happyHourMenu.sections.filter((s) => s.title !== 'Small Bites');
+---
+
+<section class="happy" id="happy-hour">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow hh-eyebrow">{site.happyHour.days} · {site.happyHour.time}</p>
+      <h2>Happy Hour on the Porch</h2>
+      <p>
+        Wind down with house-made small bites, local draft beer, and wine by the glass — every
+        afternoon we're open, Tuesday through Saturday.
+      </p>
+    </div>
+
+    <div class="hh-grid">
+      <div class="bites">
+        <h3>Small Bites</h3>
+        {
+          smallBites?.items.map((it) => (
+            <div class="hh-item">
+              <div class="hh-nm">
+                <span class="nm-line">
+                  {it.name}
+                  {it.tags?.map((t) => (
+                    <abbr class="tag" title={DIET_LABELS[t]}>
+                      {t}
+                    </abbr>
+                  ))}
+                </span>
+                {it.desc && <small>{it.desc}</small>}
+              </div>
+              <div class="hh-pr">{it.price}</div>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="drinks">
+        {
+          drinkSections.map((sec) => (
+            <div class="drink-block">
+              <h3>
+                {sec.title} <span class="dprice">{sec.note}</span>
+              </h3>
+              <ul>
+                {sec.items.map((it) => (
+                  <li>{it.name}</li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+        <p class="hh-fine">Selection rotates. Ask your server what's pouring.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .happy {
+    background: linear-gradient(135deg, var(--wine), var(--wine-lt));
+    color: #f5ece0;
+  }
+  .happy .section-head h2 {
+    color: #fff;
+  }
+  .happy .section-head p {
+    color: #f0e2d6;
+    opacity: 0.92;
+  }
+  .hh-eyebrow {
+    color: #f3d9a8;
+  }
+  .hh-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 56px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .bites h3,
+  .drinks h3 {
+    font-size: 1.4rem;
+    color: #fff;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    padding-bottom: 8px;
+  }
+  .hh-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 10px 0;
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.16);
+  }
+  .nm-line {
+    font-weight: 400;
+    color: #fff;
+  }
+  .hh-nm small {
+    display: block;
+    color: #e8d6c8;
+    font-size: 0.82rem;
+    opacity: 0.8;
+    margin-top: 3px;
+  }
+  .hh-pr {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+  .drink-block {
+    margin-bottom: 26px;
+  }
+  .dprice {
+    font-family: var(--serif);
+    color: var(--gold);
+    font-size: 1.2rem;
+  }
+  .drinks ul {
+    list-style: none;
+  }
+  .drinks li {
+    padding: 6px 0;
+    color: #f0e2d6;
+  }
+  .hh-fine {
+    font-size: 0.82rem;
+    font-style: italic;
+    opacity: 0.7;
+    color: #e8d6c8;
+  }
+  .tag {
+    font-size: 0.6rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: #f3d9a8;
+    border-radius: 2px;
+    padding: 1px 4px;
+    margin-left: 6px;
+    vertical-align: middle;
+    text-decoration: none;
+    cursor: help;
+  }
+  @media (max-width: 760px) {
+    .hh-grid {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+  }
+</style>

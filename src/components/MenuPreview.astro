@@ -1,0 +1,43 @@
+---
+import { site } from '../data/site';
+import Texture from './Texture.astro';
+import MenuList from './MenuList.astro';
+import { lunchMenu } from '../data/menu';
+---
+
+<section class="menu-section has-tex" id="menu">
+  <Texture />
+  <div class="section-head">
+    <p class="eyebrow">Seasonal &amp; made by hand</p>
+    <h2>The Lunch Menu</h2>
+    <p>A taste of what's on the counter. Menus rotate with the season and the farmers' market.</p>
+  </div>
+  <div class="wrap">
+    <MenuList menu={lunchMenu} />
+    <p class="menu-note">Vegetarian, vegan &amp; gluten-free options at every course.</p>
+    <div class="cta-row menu-cta">
+      <a class="btn btn-solid" href="/menu">See the Full Menu &amp; Happy Hour</a>
+      <a class="btn btn-ghost" href={site.toastOrderUrl} target="_blank" rel="noopener">
+        Order Online
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .menu-section {
+    background: var(--cream);
+  }
+  .menu-note {
+    text-align: center;
+    margin-top: 46px;
+    font-style: italic;
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    color: var(--sage-dk);
+  }
+  .menu-cta {
+    justify-content: center;
+    margin-top: 32px;
+  }
+</style>

@@ -1,0 +1,211 @@
+---
+// Sticky header + announcement bar. Desktop shows inline links; mobile collapses
+// to an accessible disclosure menu (progressive enhancement, ~10 lines of JS).
+import { site } from '../data/site';
+
+const links = [
+  { href: '/menu', label: 'Menu' },
+  { href: '/#happy-hour', label: 'Happy Hour' },
+  { href: '/#visit', label: 'Visit' },
+  { href: '/#catering', label: 'Catering' },
+  { href: '/#about', label: 'About' },
+];
+---
+
+<div class="topbar">
+  <span aria-hidden="true">🌿</span>
+  <strong>{site.serviceSummary}</strong>
+  <span class="dot">·</span> Order online for pickup
+</div>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="/" aria-label={`${site.name} — home`}>
+      The Porch Kitchen
+      <small>by {site.parent}</small>
+    </a>
+
+    <nav class="menu-links" aria-label="Primary">
+      {links.map((l) => <a href={l.href}>{l.label}</a>)}
+    </nav>
+
+    <div class="nav-cta">
+      <a class="btn btn-solid" href={site.toastOrderUrl} target="_blank" rel="noopener">
+        Order Online
+      </a>
+    </div>
+
+    <button
+      class="hamburger"
+      type="button"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile" hidden>
+    {links.map((l) => <a href={l.href}>{l.label}</a>)}
+    <a class="btn btn-solid" href={site.toastOrderUrl} target="_blank" rel="noopener">
+      Order Online
+    </a>
+  </nav>
+</header>
+
+<style>
+  .topbar {
+    background: var(--sage-dk);
+    color: #f4f0e6;
+    text-align: center;
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    padding: 9px 16px;
+  }
+  .topbar strong {
+    color: #fff;
+    font-weight: 600;
+  }
+  .topbar .dot {
+    margin: 0 6px;
+    opacity: 0.6;
+  }
+
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(251, 247, 239, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 74px;
+    gap: 18px;
+  }
+  .brand {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    letter-spacing: 0.02em;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .brand small {
+    display: block;
+    font-family: var(--sans);
+    font-size: 0.56rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    margin-top: 3px;
+  }
+  .menu-links {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-left: auto;
+  }
+  .menu-links a:hover {
+    color: var(--clay);
+  }
+  .nav-cta {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--ink);
+    margin: 0 auto;
+    transition: 0.2s;
+  }
+  .hamburger[aria-expanded='true'] span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .hamburger[aria-expanded='true'] span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger[aria-expanded='true'] span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    padding: 14px 28px 24px;
+    border-top: 1px solid var(--line);
+    background: var(--paper);
+  }
+  /* `hidden` attribute hides it; without the attribute it becomes a flex column. */
+  .mobile-menu:not([hidden]) {
+    display: flex;
+  }
+  .mobile-menu a:not(.btn) {
+    padding: 12px 0;
+    font-size: 0.95rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border-bottom: 1px dotted var(--line);
+  }
+  .mobile-menu .btn {
+    margin-top: 14px;
+    text-align: center;
+  }
+
+  @media (max-width: 880px) {
+    .menu-links,
+    .nav-cta {
+      display: none;
+    }
+    .hamburger {
+      display: flex;
+    }
+  }
+</style>
+
+<script>
+  const btn = document.querySelector('.hamburger');
+  const menu = document.getElementById('mobile-menu');
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      btn.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
+      menu.hidden = open;
+    });
+    // Close the menu after tapping a link.
+    menu.querySelectorAll('a').forEach((a) =>
+      a.addEventListener('click', () => {
+        btn.setAttribute('aria-expanded', 'false');
+        btn.setAttribute('aria-label', 'Open menu');
+        menu.hidden = true;
+      })
+    );
+  }
+</script>

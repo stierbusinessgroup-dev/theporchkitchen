@@ -1,0 +1,136 @@
+---
+// schema.org JSON-LD — the machine-readable twin of the page.
+// Renders a Restaurant + Menu + WebSite + BreadcrumbList graph from the same
+// data the UI uses, so structured data can never drift from what's on screen.
+import { site } from '../data/site';
+import { allMenus, DIET_SCHEMA, type MenuSection } from '../data/menu';
+
+interface Props {
+  /** Include the full nested Menu (home + /menu pages). */
+  includeMenu?: boolean;
+  /** Breadcrumb trail: [{ name, path }]. Home is added automatically. */
+  breadcrumbs?: { name: string; path: string }[];
+}
+
+const { includeMenu = true, breadcrumbs = [] } = Astro.props;
+const origin = (Astro.site ?? new URL(site.url)).origin;
+const abs = (p: string) => origin + p;
+
+const restaurantId = `${origin}/#restaurant`;
+
+function suitableForDiet(tags?: string[]) {
+  if (!tags) return undefined;
+  const diets = tags.map((t) => DIET_SCHEMA[t as keyof typeof DIET_SCHEMA]).filter(Boolean);
+  return diets.length ? diets : undefined;
+}
+
+function section(s: MenuSection) {
+  return {
+    '@type': 'MenuSection',
+    name: s.title,
+    hasMenuItem: s.items.map((it) => ({
+      '@type': 'MenuItem',
+      name: it.name,
+      ...(it.desc ? { description: it.desc } : {}),
+      ...(it.price != null
+        ? { offers: { '@type': 'Offer', price: it.price.toFixed(2), priceCurrency: 'USD' } }
+        : {}),
+      ...(suitableForDiet(it.tags) ? { suitableForDiet: suitableForDiet(it.tags) } : {}),
+    })),
+  };
+}
+
+const menuNode = {
+  '@type': 'Menu',
+  '@id': `${origin}/menu#menu`,
+  name: `${site.name} Menu`,
+  url: abs('/menu'),
+  inLanguage: 'en-US',
+  hasMenuSection: allMenus.map((m) => ({
+    '@type': 'MenuSection',
+    name: m.title,
+    description: `Served ${m.served}`,
+    hasMenuSection: m.sections.map(section),
+  })),
+};
+
+const restaurant = {
+  '@type': 'Restaurant',
+  '@id': restaurantId,
+  name: site.name,
+  alternateName: `${site.name} by ${site.parent}`,
+  description: site.shortDescription,
+  url: origin + '/',
+  telephone: site.phoneHref.replace('tel:', ''),
+  email: site.email,
+  image: [abs('/og-image.jpg')],
+  logo: abs('/logo.png'),
+  priceRange: site.priceRange,
+  servesCuisine: [...site.cuisine],
+  currenciesAccepted: 'USD',
+  paymentAccepted: 'Cash, Credit Card',
+  acceptsReservations: 'False',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.address.street,
+    addressLocality: site.address.locality,
+    addressRegion: site.address.region,
+    postalCode: site.address.postalCode,
+    addressCountry: site.address.country,
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: site.geo.lat,
+    longitude: site.geo.lng,
+  },
+  hasMap: site.mapDirectionsUrl,
+  areaServed: { '@type': 'City', name: 'Sebastopol, California' },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: [...site.openDays],
+      opens: site.opens,
+      closes: site.closes,
+    },
+  ],
+  sameAs: [site.instagram, site.facebook],
+  menu: abs('/menu'),
+  ...(includeMenu ? { hasMenu: menuNode } : {}),
+  parentOrganization: {
+    '@type': 'Organization',
+    name: site.parent,
+    url: site.parentUrl,
+  },
+};
+
+const website = {
+  '@type': 'WebSite',
+  '@id': `${origin}/#website`,
+  url: origin + '/',
+  name: site.name,
+  description: site.shortDescription,
+  publisher: { '@id': restaurantId },
+  inLanguage: 'en-US',
+};
+
+const crumbTrail = [{ name: 'Home', path: '/' }, ...breadcrumbs];
+const breadcrumbList =
+  crumbTrail.length > 1
+    ? {
+        '@type': 'BreadcrumbList',
+        itemListElement: crumbTrail.map((c, i) => ({
+          '@type': 'ListItem',
+          position: i + 1,
+          name: c.name,
+          item: abs(c.path === '/' ? '/' : c.path),
+        })),
+      }
+    : null;
+
+const graph = {
+  '@context': 'https://schema.org',
+  '@graph': [restaurant, website, ...(breadcrumbList ? [breadcrumbList] : [])],
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(graph)} is:inline />
