@@ -7,27 +7,28 @@
    ============================================================ */
 
 :root {
-  /* Monochrome palette modeled on yangskitchenla.com: near-white ground,
-     warm-charcoal text, hairline rules, NO accent color — the photography
-     carries all the color. */
-  --bg: #fffefa;        /* page ground (off-white, a whisper warm) */
-  --panel: #f3f2ee;     /* alternating section panel (neutral light) */
-  --ink: #2d2926;       /* primary text (warm charcoal) */
-  --ink-strong: #100f0d;
-  --muted: #76716a;     /* secondary text */
-  --line: rgba(0, 0, 0, 0.13); /* hairline dividers */
-  --dark: #211e1b;      /* charcoal anchor (order band, footer) */
+  /* Monochrome palette modeled on yangskitchenla.com, tuned for brighter
+     whites + higher contrast: clean white ground, deep warm near-black text
+     (warm so it never reads blue against the white), hairline rules, NO
+     accent color — the photography carries all the color. */
+  --bg: #ffffff;        /* page ground (clean bright white) */
+  --panel: #f4f4f2;     /* alternating section panel (neutral light) */
+  --ink: #1e1b18;       /* primary text (deep warm near-black) */
+  --ink-strong: #0c0a08;
+  --muted: #6b665f;     /* secondary text (warm grey) */
+  --line: rgba(0, 0, 0, 0.15); /* hairline dividers */
+  --dark: #1b1714;      /* charcoal anchor (order band, footer) */
 
   /* Legacy accent names repointed to monochrome so existing component
      styles render neutral without per-rule edits. */
-  --cream: #fffefa;
-  --paper: #f3f2ee;
-  --sage: #2d2926;
-  --sage-dk: #100f0d;
-  --clay: #2d2926;
-  --gold: #76716a;
-  --wine: #211e1b;
-  --wine-lt: #2d2926;
+  --cream: #ffffff;
+  --paper: #f4f4f2;
+  --sage: #1e1b18;
+  --sage-dk: #0c0a08;
+  --clay: #1e1b18;
+  --gold: #6b665f;
+  --wine: #1b1714;
+  --wine-lt: #1e1b18;
 
   --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --sans: "Inter", -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
