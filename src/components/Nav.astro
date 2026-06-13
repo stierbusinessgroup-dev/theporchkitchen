@@ -2,6 +2,7 @@
 // Sticky header + announcement bar. Desktop shows inline links; mobile collapses
 // to an accessible disclosure menu (progressive enhancement, ~10 lines of JS).
 import { site } from '../data/site';
+import logo from '../assets/logo.jpg';
 
 const links = [
   { href: '/menu', label: 'Menu' },
@@ -21,8 +22,13 @@ const links = [
 <header>
   <div class="wrap nav">
     <a class="brand" href="/" aria-label={`${site.name} — home`}>
-      The Porch Kitchen
-      <small>by {site.parent}</small>
+      <img
+        src={logo.src}
+        width={logo.width}
+        height={logo.height}
+        alt={`${site.name} — by ${site.parent}`}
+        class="brand-logo"
+      />
     </a>
 
     <nav class="menu-links" aria-label="Primary">
@@ -88,21 +94,18 @@ const links = [
     gap: 18px;
   }
   .brand {
-    font-family: var(--serif);
-    font-size: 1.5rem;
-    letter-spacing: 0.02em;
-    line-height: 1;
-    white-space: nowrap;
+    display: flex;
+    align-items: center;
   }
-  .brand small {
+  .brand-logo {
+    height: 54px;
+    width: auto;
     display: block;
-    font-family: var(--sans);
-    font-size: 0.56rem;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: var(--muted);
-    font-weight: 600;
-    margin-top: 3px;
+  }
+  @media (max-width: 600px) {
+    .brand-logo {
+      height: 44px;
+    }
   }
   .menu-links {
     display: flex;
