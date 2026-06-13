@@ -53,7 +53,7 @@ export const site = {
     'https://www.toasttab.com/local/order/the-cook-and-the-drummer-6811-laguna-park-way',
   instagram: 'https://www.instagram.com/theporchkitchen/',
   facebook: 'https://www.facebook.com/profile.php?id=61582885402145',
-  cateringUrl: 'https://thecookandthedrummer.com/events-gathering/',
+  cateringUrl: 'https://thecookandthedrummer.com/',
   parentUrl: 'https://thecookandthedrummer.com/',
 
   // ── People ──────────────────────────────────────────────────────────
