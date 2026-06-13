@@ -1,0 +1,102 @@
+---
+import { Image } from 'astro:assets';
+
+// Pull every photo in src/assets/gallery and optimize via astro:assets.
+const modules = import.meta.glob<{ default: ImageMetadata }>(
+  '../assets/gallery/*.{jpg,jpeg,JPG}',
+  { eager: true }
+);
+
+// Descriptive alt text + display order (best-looking first).
+const alts: Record<string, string> = {
+  charcutBoardThePorch: 'Cheese & charcuterie board with crackers, candied nuts, honey, and edible flowers',
+  grainBowl: 'Grain bowl with farro, roasted butternut squash, arugula, and goat cheese',
+  salmon: 'Seared salmon with lemon and microgreens',
+  paniniOnWoodPLate: 'Pressed panini on a wood plate',
+  roastedTurkey: 'House-roasted turkey',
+  beetSalad: 'Roasted beet salad',
+  quinoaSalad: 'Red quinoa salad',
+  ceasarSalad: 'Caesar salad',
+  chefSalad: "Chef's salad",
+  chickenTortillaSalad: 'Chicken tortilla salad',
+  onionSoup: 'French onion soup',
+  soupOnWoodCuttingBoard: 'Soup of the day',
+  hibuscusIcedTea: 'House-made hibiscus iced tea',
+  canOfRose: 'Local rosé by the can',
+};
+const order = Object.keys(alts);
+
+const photos = Object.entries(modules)
+  .map(([path, mod]) => {
+    const name = path.split('/').pop()!.replace(/\.(jpe?g|JPG)$/, '');
+    return { name, img: mod.default, alt: alts[name] ?? 'A dish at The Porch Kitchen' };
+  })
+  .sort((a, b) => {
+    const ai = order.indexOf(a.name);
+    const bi = order.indexOf(b.name);
+    return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
+  });
+---
+
+<section class="gallery" id="gallery">
+  <div class="section-head">
+    <p class="eyebrow">Made by hand</p>
+    <h2>From the Kitchen</h2>
+  </div>
+  <div class="wrap">
+    <div class="masonry">
+      {
+        photos.map(({ img, alt }) => (
+          <figure>
+            <Image
+              src={img}
+              alt={alt}
+              widths={[400, 700]}
+              sizes="(max-width: 600px) 50vw, (max-width: 980px) 33vw, 25vw"
+              loading="lazy"
+            />
+          </figure>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .gallery {
+    background: var(--bg);
+  }
+  .masonry {
+    column-count: 4;
+    column-gap: 14px;
+  }
+  figure {
+    margin: 0 0 14px;
+    break-inside: avoid;
+    overflow: hidden;
+    border-radius: 3px;
+  }
+  figure :global(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 0.4s ease;
+  }
+  figure:hover :global(img) {
+    transform: scale(1.04);
+  }
+  @media (max-width: 980px) {
+    .masonry {
+      column-count: 3;
+    }
+  }
+  @media (max-width: 600px) {
+    .masonry {
+      column-count: 2;
+      column-gap: 10px;
+    }
+    figure {
+      margin-bottom: 10px;
+    }
+  }
+</style>

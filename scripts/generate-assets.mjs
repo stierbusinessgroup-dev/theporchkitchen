@@ -51,7 +51,7 @@ const overlay = Buffer.from(`
         font-size="22" letter-spacing="3" fill="#ffffff">LUNCH · HAPPY HOUR · DINNER · TUE–SAT</text>
 </svg>`);
 
-await sharp(join(assets, 'hero-dining.jpg'))
+await sharp(join(assets, 'hero-spread.jpg'))
   .resize(W, H, { fit: 'cover', position: 'centre' })
   .composite([{ input: overlay, top: 0, left: 0 }])
   .jpeg({ quality: 84, mozjpeg: true })
