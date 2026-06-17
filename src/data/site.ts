@@ -8,10 +8,10 @@ export const site = {
   parent: 'The Cook & The Drummer',
   tagline: 'Farm-fresh California cooking, French at heart.',
   shortDescription:
-    'Farm-fresh California lunch, happy hour and dinner in Sebastopol, from chef Lisa Boisset of The Cook & The Drummer. Everything made by hand — French-style sandwiches, artisan salads, grain bowls, and a Tuesday–Saturday happy hour with draft beer and local wine.',
+    'Farm-fresh California lunch and happy hour in Sebastopol, from chef Lisa Boisset of The Cook & The Drummer. Everything made by hand — French-style sandwiches, artisan salads, grain bowls, and a Tuesday–Saturday happy hour with draft beer and local wine.',
   // Used as the meta description on the home page (keep ~150–160 chars).
   metaDescription:
-    'The Porch Kitchen in Sebastopol — farm-fresh California cooking, French at heart. Lunch, happy hour & dinner Tue–Sat. House-made sandwiches, salads, grain bowls. Order online.',
+    'The Porch Kitchen in Sebastopol — farm-fresh California cooking, French at heart. Lunch & happy hour Tue–Sat. House-made sandwiches, salads, grain bowls. Order online.',
 
   // ── Contact / location ──────────────────────────────────────────────
   url: 'https://theporchkitchen.com',
@@ -43,7 +43,7 @@ export const site = {
     { label: 'Sunday – Monday', value: 'Closed' },
   ],
   happyHour: { days: 'Tuesday – Saturday', time: '3:00 – 6:00pm' },
-  serviceSummary: 'Lunch · Happy Hour · Dinner — Tuesday through Saturday',
+  serviceSummary: 'Lunch · Happy Hour — Tuesday through Saturday',
 
   cuisine: ['Californian', 'French', 'New American', 'Cafe'],
   priceRange: '$$',

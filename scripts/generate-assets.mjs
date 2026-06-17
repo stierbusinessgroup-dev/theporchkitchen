@@ -48,7 +48,7 @@ const overlay = Buffer.from(`
         font-size="22" letter-spacing="6" fill="#efe9dc">SEBASTOPOL · SONOMA WINE COUNTRY</text>
   <rect x="${W / 2 - 70}" y="69%" width="140" height="2" fill="#b0822f"/>
   <text x="50%" y="77%" text-anchor="middle" font-family="Arial, Helvetica, sans-serif"
-        font-size="22" letter-spacing="3" fill="#ffffff">LUNCH · HAPPY HOUR · DINNER · TUE–SAT</text>
+        font-size="22" letter-spacing="3" fill="#ffffff">LUNCH · HAPPY HOUR · TUE–SAT</text>
 </svg>`);
 
 await sharp(join(assets, 'hero-spread.jpg'))
