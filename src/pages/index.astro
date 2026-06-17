@@ -6,6 +6,7 @@ import Hero from '../components/Hero.astro';
 import Intro from '../components/Intro.astro';
 import MenuPreview from '../components/MenuPreview.astro';
 import HappyHour from '../components/HappyHour.astro';
+import Beverages from '../components/Beverages.astro';
 import OrderBand from '../components/OrderBand.astro';
 import Catering from '../components/Catering.astro';
 import About from '../components/About.astro';
@@ -16,7 +17,7 @@ import { site } from '../data/site';
 ---
 
 <Base
-  title="The Porch Kitchen — Farm-Fresh Lunch, Happy Hour & Dinner in Sebastopol"
+  title="The Porch Kitchen — Farm-Fresh Lunch & Happy Hour in Sebastopol"
   description={site.metaDescription}
   path="/"
   type="restaurant"
@@ -27,6 +28,7 @@ import { site } from '../data/site';
   <Intro />
   <MenuPreview />
   <HappyHour />
+  <Beverages />
   <OrderBand />
   <Catering />
   <About />

@@ -1,0 +1,41 @@
+---
+import Texture from './Texture.astro';
+import MenuList from './MenuList.astro';
+import { beveragesMenu } from '../data/menu';
+---
+
+<section class="bev has-tex" id="beverages">
+  <Texture />
+  <div class="section-head">
+    <p class="eyebrow">Sonoma & French · by the glass and bottle</p>
+    <h2>The Beverage List</h2>
+    <p class="bev-lede">
+      A small, considered wine program — sparkling and still, Sonoma County and France — plus local
+      drafts, cans, ciders and house-made non-alcoholic options.
+    </p>
+  </div>
+  <div class="wrap">
+    <MenuList menu={beveragesMenu} />
+    <div class="cta-row bev-cta">
+      <a class="btn btn-ghost" href="/menu#beverages">Full Menu &amp; Happy Hour</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .bev {
+    background: var(--paper);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .bev-lede {
+    max-width: 620px;
+    margin: 14px auto 0;
+    color: var(--muted);
+    font-size: 1.05rem;
+  }
+  .bev-cta {
+    justify-content: center;
+    margin-top: 36px;
+  }
+</style>

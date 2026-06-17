@@ -3,7 +3,7 @@
   "type": "module",
   "version": "1.0.0",
   "private": true,
-  "description": "The Porch Kitchen — farm-fresh California lunch, happy hour & dinner in Sebastopol.",
+  "description": "The Porch Kitchen — farm-fresh California lunch & happy hour in Sebastopol.",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
