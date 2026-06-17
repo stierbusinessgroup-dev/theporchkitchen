@@ -42,7 +42,7 @@ export const site = {
     { label: 'Tuesday – Saturday', value: '11:00am – 8:00pm' },
     { label: 'Sunday – Monday', value: 'Closed' },
   ],
-  happyHour: { days: 'Tuesday – Saturday', time: '3:00 – 6:00pm' },
+  happyHour: { days: 'Wednesday – Saturday', time: '3:00 – 6:00pm' },
   serviceSummary: 'Lunch · Happy Hour — Tuesday through Saturday',
 
   cuisine: ['Californian', 'French', 'New American', 'Cafe'],

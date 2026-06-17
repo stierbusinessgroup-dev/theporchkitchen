@@ -136,7 +136,7 @@ export const mainMenu: Menu = {
 export const happyHourMenu: Menu = {
   id: 'happy-hour',
   title: 'Happy Hour',
-  served: 'Tuesday – Saturday, 3:00 – 6:00pm',
+  served: 'Wednesday – Saturday, 3:00 – 6:00pm',
   sections: [
     {
       title: 'Small Bites',
@@ -181,4 +181,191 @@ export const happyHourMenu: Menu = {
   ],
 };
 
-export const allMenus: Menu[] = [mainMenu, happyHourMenu];
+export const beveragesMenu: Menu = {
+  id: 'beverages',
+  title: 'Beverages',
+  served: 'All day',
+  sections: [
+    {
+      title: 'Sparkling, White & Rosé',
+      note: 'glass / bottle',
+      items: [
+        {
+          name: 'Blanc de Blancs Sparkling Brut',
+          desc: "Crémant d'Alsace, NV, France",
+          priceText: '13 / 39',
+        },
+        {
+          name: 'Brut Rosé Sparkling',
+          desc: 'Baron de Seillac, NV, France',
+          priceText: '9 / 30',
+        },
+        {
+          name: 'Bubbly Rosé',
+          desc: 'Square Peg, California (12 oz can)',
+          priceText: '12 / —',
+        },
+        {
+          name: 'Extra Brut Premier Cru Champagne',
+          desc: "Jean François d'Autreville, NV, France",
+          priceText: '— / 72',
+        },
+        { name: 'Viognier', desc: 'Le Chansac, 2021, France', priceText: '9 / 27' },
+        {
+          name: 'Gewürztraminer',
+          desc: 'Les Comtes de Ribeauvillé, 2016, Alsace, France',
+          priceText: '14 / 42',
+        },
+        {
+          name: 'Sauvignon Blanc',
+          desc: 'La Villaudière, 2024, Loire Valley, France',
+          priceText: '11 / 33',
+        },
+        {
+          name: 'Sancerre',
+          desc: 'Domaine Jean-Paul & Jean-Luc Millet, 2024, Sancerre, France',
+          priceText: '15 / —',
+        },
+        { name: 'Chardonnay', desc: '5 Russians, 2025, Sonoma Coast', priceText: '11 / 33' },
+        { name: 'Rosé Provence', desc: 'Domaine de Beaupré, 2022, France', priceText: '10 / 30' },
+        {
+          name: 'Rosé of Pinot Noir',
+          desc: 'Tongue Dancer Wines, 2025, Sonoma County',
+          priceText: '13 / —',
+        },
+      ],
+    },
+    {
+      title: 'Red Wine',
+      note: 'glass / bottle',
+      items: [
+        { name: 'Beaujolais', desc: 'Pascal Berthier, 2020, France', priceText: '9 / 27' },
+        { name: 'Pinot Noir', desc: '5 Russians, 2023, Sonoma Coast', priceText: '10 / 30' },
+        {
+          name: 'Pinot Noir',
+          desc: 'Breaking Bread, 2024, Sonoma Coast',
+          priceText: '15 / —',
+        },
+        { name: 'Malbec', desc: 'Clos La Coutale, 2023, France', priceText: '11 / 33' },
+        {
+          name: 'Red Blend',
+          desc: 'Peterson Winery, 2021, Dry Creek Valley',
+          priceText: '14 / —',
+        },
+      ],
+    },
+    {
+      title: 'Beer — On Tap',
+      items: [
+        {
+          name: 'Happy Hops IPA',
+          desc: 'Russian River Brewing · 16 oz · 6.5% ABV',
+          price: 7.5,
+        },
+        {
+          name: 'Bukovany Five Czech Pils',
+          desc: 'Old Caz · 16 oz · 5.1% ABV',
+          price: 7.5,
+        },
+        {
+          name: 'Damnation Belgian Golden Ale',
+          desc: 'Russian River Brewing · 12 oz pour · 7.5% ABV',
+          price: 7.5,
+        },
+      ],
+    },
+    {
+      title: 'Beer — Cans',
+      items: [
+        {
+          name: 'Taco Truck Lager',
+          desc: 'Dust Bowl Brewing · 16 oz · 4.7% ABV',
+          price: 7,
+        },
+        {
+          name: 'Black Pearl Oyster Lager',
+          desc: 'Iron Ox Brewing · 16 oz · 5.1% ABV',
+          price: 7,
+        },
+        {
+          name: 'Free Craisg Tropical Hazy IPA',
+          desc: 'Old Caz · 16 oz · 6.9% ABV',
+          price: 8,
+        },
+        {
+          name: 'Kaleidoscope Hazy IPA',
+          desc: 'Parliament Brewing · 16 oz · 6.9% ABV',
+          price: 8,
+        },
+        {
+          name: 'Adamoxium IPA',
+          desc: 'Iron Ox Brewing · 16 oz · 6.9% ABV',
+          price: 8,
+        },
+        {
+          name: 'Revision Double IPA',
+          desc: 'Revision Brewing · 16 oz · 8% ABV',
+          price: 8.5,
+        },
+      ],
+    },
+    {
+      title: 'Cider, Seltzer & Sour',
+      items: [
+        {
+          name: 'Scarlett Cider',
+          desc: 'Ethic Ciders · local apples, blackberries & raspberries · 16 oz · 7.5% ABV',
+          price: 8,
+        },
+        {
+          name: 'Brut Cider',
+          desc: 'Le Père Jules, France · farmhouse style · 11 oz · 5% ABV',
+          price: 7,
+        },
+        {
+          name: 'Sparklepants Seltzer',
+          desc: 'Cactus Coopa, Cooperage Brewing · orange & pineapple · 16 oz · 6.6% ABV',
+          price: 7,
+        },
+        {
+          name: 'Passionfruit Guava Seltzer',
+          desc: 'Belching Beaver Brewing · 12 oz · 5.5% ABV',
+          price: 6,
+        },
+        {
+          name: 'Fruitception POG Kettle Sour',
+          desc: 'Cooperage · passionfruit, orange, guava · 16 oz · 5.3% ABV',
+          price: 8,
+        },
+      ],
+    },
+    {
+      title: 'Non-Alcoholic',
+      items: [
+        {
+          name: 'House Hibiscus Mint Tea',
+          desc: 'Fresh-brewed, slightly sweet',
+          price: 5,
+          tags: ['ve', 'gf'],
+        },
+        {
+          name: 'Ethic Sparkling Apple Tonic',
+          desc: 'Local apples, ACV, refreshing',
+          price: 5.5,
+          tags: ['ve', 'gf'],
+        },
+        { name: 'San Pellegrino Sparkling Water', price: 3, tags: ['ve', 'gf'] },
+        { name: 'San Pellegrino Aranciata', desc: 'Orange', price: 3.5, tags: ['ve', 'gf'] },
+        { name: 'San Pellegrino Limonata', desc: 'Lemon', price: 3.5, tags: ['ve', 'gf'] },
+        {
+          name: 'OliPop Sodas',
+          desc: 'Root beer, ginger ale, cherry vanilla',
+          price: 3.5,
+          tags: ['ve', 'gf'],
+        },
+      ],
+    },
+  ],
+};
+
+export const allMenus: Menu[] = [mainMenu, happyHourMenu, beveragesMenu];
