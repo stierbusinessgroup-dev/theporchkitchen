@@ -1,0 +1,109 @@
+---
+import { site } from '../data/site';
+import Texture from './Texture.astro';
+---
+
+<section class="worldcup has-tex" id="world-cup">
+  <Texture />
+  <div class="wrap">
+    <p class="eyebrow">June 11 – July 19, 2026 · live on the porch</p>
+    <h2><span class="ball" aria-hidden="true">⚽</span> World Cup on the Porch</h2>
+    <p class="lede">
+      We're showing the matches all summer — pull up a chair, order a pint of Russian River or a
+      glass of Sancerre, and call the goals with us. Afternoon kickoffs land right in our
+      lunch and happy-hour window.
+    </p>
+
+    <div class="wc-grid">
+      <div class="wc-card">
+        <h3>Daytime matches</h3>
+        <p>Most group-stage and knockout games kick off in the afternoon — perfect for a long
+          lunch or an early happy hour.</p>
+      </div>
+      <div class="wc-card">
+        <h3>Food &amp; drink</h3>
+        <p>Our regular menu — Lisa's house-roasted turkey sandwich, focaccia toasts, pomme frites,
+          plus $6 drafts and $7 wine by the glass during happy hour.</p>
+      </div>
+      <div class="wc-card">
+        <h3>All ages welcome</h3>
+        <p>Family-friendly viewing on the porch. Kettle corn for the kids, Old Caz Czech Pils
+          for the grown-ups.</p>
+      </div>
+    </div>
+
+    <div class="cta-row wc-cta">
+      <a class="btn btn-solid" href={site.instagram} target="_blank" rel="noopener">
+        Match schedule on Instagram →
+      </a>
+      <a class="btn btn-ghost" href={site.toastOrderUrl} target="_blank" rel="noopener">
+        Order Ahead for Pickup
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .worldcup {
+    background: var(--cream);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    text-align: center;
+  }
+  .worldcup .eyebrow {
+    color: var(--muted);
+  }
+  .worldcup h2 {
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    margin: 10px 0 18px;
+  }
+  .worldcup h2 .ball {
+    display: inline-block;
+    margin-right: 8px;
+    transform: translateY(-2px);
+    font-size: 0.86em;
+  }
+  .lede {
+    max-width: 720px;
+    margin: 0 auto;
+    color: var(--ink);
+    font-size: 1.12rem;
+    line-height: 1.6;
+  }
+  .wc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin: 48px auto 40px;
+    max-width: 960px;
+    text-align: left;
+  }
+  .wc-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 24px 22px;
+  }
+  .wc-card h3 {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    color: var(--sage-dk);
+    margin-bottom: 8px;
+  }
+  .wc-card p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+  .wc-cta {
+    justify-content: center;
+    margin-top: 6px;
+  }
+  @media (max-width: 760px) {
+    .wc-grid {
+      grid-template-columns: 1fr;
+      gap: 18px;
+      margin: 36px auto 30px;
+    }
+  }
+</style>
