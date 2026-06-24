@@ -13,10 +13,11 @@ const links = [
 ];
 ---
 
-<div class="topbar">
-  <span aria-hidden="true">🌿</span>
-  <strong>{site.serviceSummary}</strong>
-  <span class="dot">·</span> Order online for pickup
+<div class="topbar topbar-wc">
+  <span aria-hidden="true">⚽</span>
+  <strong>World Cup on the Porch</strong>
+  <span class="dot">·</span> Matches live through July 19
+  <span class="dot">·</span> <a href="/#world-cup">See the schedule</a>
 </div>
 
 <header>
@@ -76,6 +77,11 @@ const links = [
   .topbar .dot {
     margin: 0 6px;
     opacity: 0.6;
+  }
+  .topbar a {
+    color: #fff;
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
 
   header {
