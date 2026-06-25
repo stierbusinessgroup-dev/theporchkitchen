@@ -4,15 +4,18 @@
 // data the UI uses, so structured data can never drift from what's on screen.
 import { site } from '../data/site';
 import { allMenus, DIET_SCHEMA, type MenuSection } from '../data/menu';
+import { faqs } from '../data/faq';
 
 interface Props {
   /** Include the full nested Menu (home + /menu pages). */
   includeMenu?: boolean;
+  /** Emit the FAQPage node (only where the FAQ section is visible — the home page). */
+  includeFaq?: boolean;
   /** Breadcrumb trail: [{ name, path }]. Home is added automatically. */
   breadcrumbs?: { name: string; path: string }[];
 }
 
-const { includeMenu = true, breadcrumbs = [] } = Astro.props;
+const { includeMenu = true, includeFaq = false, breadcrumbs = [] } = Astro.props;
 const origin = (Astro.site ?? new URL(site.url)).origin;
 const abs = (p: string) => origin + p;
 
@@ -113,6 +116,19 @@ const website = {
   inLanguage: 'en-US',
 };
 
+const faqPage =
+  includeFaq && faqs.length
+    ? {
+        '@type': 'FAQPage',
+        '@id': `${origin}/#faq`,
+        mainEntity: faqs.map((f) => ({
+          '@type': 'Question',
+          name: f.q,
+          acceptedAnswer: { '@type': 'Answer', text: f.a },
+        })),
+      }
+    : null;
+
 const crumbTrail = [{ name: 'Home', path: '/' }, ...breadcrumbs];
 const breadcrumbList =
   crumbTrail.length > 1
@@ -129,7 +145,12 @@ const breadcrumbList =
 
 const graph = {
   '@context': 'https://schema.org',
-  '@graph': [restaurant, website, ...(breadcrumbList ? [breadcrumbList] : [])],
+  '@graph': [
+    restaurant,
+    website,
+    ...(faqPage ? [faqPage] : []),
+    ...(breadcrumbList ? [breadcrumbList] : []),
+  ],
 };
 ---
 
