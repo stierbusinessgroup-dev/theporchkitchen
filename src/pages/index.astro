@@ -13,6 +13,7 @@ import About from '../components/About.astro';
 import Reviews from '../components/Reviews.astro';
 import Gallery from '../components/Gallery.astro';
 import Visit from '../components/Visit.astro';
+import Faq from '../components/Faq.astro';
 import { site } from '../data/site';
 ---
 
@@ -21,6 +22,7 @@ import { site } from '../data/site';
   description={site.metaDescription}
   path="/"
   type="restaurant"
+  includeFaq={true}
 >
   <Nav slot="header" />
 
@@ -35,6 +37,7 @@ import { site } from '../data/site';
   <Gallery />
   <Reviews />
   <Visit />
+  <Faq />
 
   <Footer slot="footer" />
 </Base>

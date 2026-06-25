@@ -11,6 +11,7 @@ interface Props {
   image?: string;
   type?: 'website' | 'article' | 'restaurant';
   includeMenu?: boolean;
+  includeFaq?: boolean;
   breadcrumbs?: { name: string; path: string }[];
 }
 
@@ -21,6 +22,7 @@ const {
   image,
   type = 'website',
   includeMenu = true,
+  includeFaq = false,
   breadcrumbs = [],
 } = Astro.props;
 ---
@@ -50,7 +52,7 @@ const {
       rel="stylesheet"
     />
 
-    <JsonLd includeMenu={includeMenu} breadcrumbs={breadcrumbs} />
+    <JsonLd includeMenu={includeMenu} includeFaq={includeFaq} breadcrumbs={breadcrumbs} />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
