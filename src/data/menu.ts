@@ -170,6 +170,16 @@ export const happyHourMenu: Menu = {
       ],
     },
     {
+      title: 'Cans',
+      note: '$5',
+      items: [
+        { name: 'Dust Bowl Taco Truck Lager', priceText: '5' },
+        { name: 'Iron Ox Adamoxium IPA', priceText: '5' },
+        { name: 'Iron Ox Black Oyster Lager', priceText: '5' },
+        { name: 'Ethic Scarlet Cider', priceText: '5' },
+      ],
+    },
+    {
       title: 'Wine by the Glass',
       note: '$7',
       items: [
