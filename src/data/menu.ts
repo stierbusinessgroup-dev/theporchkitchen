@@ -50,8 +50,53 @@ export const DIET_SCHEMA: Partial<Record<Diet, string>> = {
 
 export const mainMenu: Menu = {
   id: 'menu',
-  title: 'Menu',
+  title: 'Lunch',
   served: 'Tuesday – Saturday',
+  sections: [
+    {
+      title: 'Salads & Soup',
+      items: [
+        { name: 'Butternut Squash Salad', price: 17.95, tags: ['v', 'gf'] },
+        { name: 'Beet Salad', price: 16.95, tags: ['v', 'gf'] },
+        { name: 'Caesar', desc: 'Add roasted chicken +$5', price: 15.25 },
+        { name: 'Soup of the Day', desc: 'Made fresh daily', price: 12 },
+        { name: 'Savory Grain Bowl', price: 19.95, tags: ['v'] },
+        { name: 'Quinoa Bowl', price: 16.95, tags: ['v'] },
+      ],
+    },
+    {
+      title: 'Sandwiches',
+      items: [
+        {
+          name: 'Turkey Pesto',
+          desc: 'House-roasted turkey, basil pesto — “the best turkey sandwich” (Yelp)',
+          price: 17.95,
+          tags: ['s'],
+        },
+        { name: 'Jambon Beurre', desc: 'Ham, sweet butter, arugula', price: 16.95 },
+        {
+          name: 'Chèvre Tomate',
+          desc: 'Goat cheese, tomato, arugula, herbes de Provence',
+          price: 16.95,
+          tags: ['v'],
+        },
+        { name: 'Daily Sandwich', desc: "Chef Lisa's daily creation", price: 19 },
+      ],
+    },
+    {
+      title: 'Sweets',
+      items: [
+        { name: 'Cookie Plate', price: 10, tags: ['v'] },
+        { name: 'Cheesecake', price: 14, tags: ['v'] },
+      ],
+    },
+  ],
+};
+
+export const eveningMenu: Menu = {
+  id: 'evening',
+  title: 'Evening',
+  served: 'Starters · served evening only',
   sections: [
     {
       title: 'Starters',
@@ -72,62 +117,6 @@ export const mainMenu: Menu = {
           price: 24,
           tags: ['s'],
         },
-      ],
-    },
-    {
-      title: 'Salads & Soup',
-      items: [
-        { name: 'Butternut Squash Salad', price: 17.95, tags: ['v', 'gf'] },
-        { name: 'Beet Salad', price: 16.95, tags: ['v', 'gf'] },
-        { name: 'Caesar', desc: 'Add roasted chicken +$4.70', price: 15.25 },
-        { name: 'Soup of the Day', desc: 'Made fresh daily', price: 12 },
-        { name: 'Kabocha Squash Soup', price: 10.95, tags: ['ve', 'gf'] },
-        { name: 'Savory Grain Bowl', price: 19.95, tags: ['v'] },
-      ],
-    },
-    {
-      title: 'Sandwiches',
-      items: [
-        {
-          name: 'Turkey Pesto',
-          desc: 'House-roasted turkey, basil pesto — “the best turkey sandwich” (Yelp)',
-          price: 17.95,
-          tags: ['s'],
-        },
-        { name: 'Jambon Beurre', desc: 'Ham, sweet butter, baguette', price: 16.95 },
-        {
-          name: 'Chèvre Tomate',
-          desc: 'Goat cheese, tomato, herbes de Provence',
-          price: 16.95,
-          tags: ['v'],
-        },
-        { name: 'Daily Sandwich', desc: "Chef Lisa's daily creation", price: 19 },
-      ],
-    },
-    {
-      title: 'Specials',
-      items: [
-        { name: 'Chicken Special', desc: "Ask about today's preparation", price: 28 },
-      ],
-    },
-    {
-      title: 'Sweets',
-      items: [
-        { name: 'Cookie Plate', price: 10, tags: ['v'] },
-        { name: 'Cheesecake', price: 14, tags: ['v'] },
-      ],
-    },
-    {
-      title: 'Drinks',
-      items: [
-        { name: 'House Hibiscus Iced Tea', price: 5, tags: ['ve', 'gf'] },
-        { name: 'Hot Coffee', price: 3.5, tags: ['ve', 'gf'] },
-        { name: 'Hot Tea', price: 3, tags: ['ve', 'gf'] },
-        { name: 'Yerba Mate', price: 4, tags: ['ve', 'gf'] },
-        { name: 'San Pellegrino', desc: 'Plain or flavored', price: 3.5, tags: ['ve', 'gf'] },
-        { name: 'Olipop', price: 3.5, tags: ['ve', 'gf'] },
-        { name: 'Topo Chico', price: 3.5, tags: ['ve', 'gf'] },
-        { name: 'Ethic Tonic', price: 5.5, tags: ['ve', 'gf'] },
       ],
     },
   ],
@@ -183,9 +172,10 @@ export const happyHourMenu: Menu = {
       title: 'Wine by the Glass',
       note: '$7',
       items: [
-        { name: 'White', priceText: '7' },
-        { name: 'Red', priceText: '7' },
+        { name: 'Chardonnay', priceText: '7' },
+        { name: 'Sauvignon Blanc', priceText: '7' },
         { name: 'Rosé', priceText: '7' },
+        { name: 'Pinot Noir', priceText: '7' },
       ],
     },
   ],
@@ -273,7 +263,7 @@ export const beveragesMenu: Menu = {
           price: 7.5,
         },
         {
-          name: 'Bukovany Five Czech Pils',
+          name: 'Bukovany Pivo',
           desc: 'Old Caz · 16 oz · 5.1% ABV',
           price: 7.5,
         },
@@ -298,7 +288,7 @@ export const beveragesMenu: Menu = {
           price: 7,
         },
         {
-          name: 'Free Craisg Tropical Hazy IPA',
+          name: 'Free Craigs Tropical Hazy IPA',
           desc: 'Old Caz · 16 oz · 6.9% ABV',
           price: 8,
         },
@@ -314,7 +304,7 @@ export const beveragesMenu: Menu = {
         },
         {
           name: 'Revision Double IPA',
-          desc: 'Revision Brewing · 16 oz · 8% ABV',
+          desc: 'Revision Brewing · 12 oz · 8% ABV',
           price: 8.5,
         },
       ],
@@ -358,6 +348,8 @@ export const beveragesMenu: Menu = {
           price: 5,
           tags: ['ve', 'gf'],
         },
+        { name: 'Hot Coffee', price: 3.5, tags: ['ve', 'gf'] },
+        { name: 'Hot Tea', price: 3, tags: ['ve', 'gf'] },
         {
           name: 'Ethic Sparkling Apple Tonic',
           desc: 'Local apples, ACV, refreshing',
@@ -378,4 +370,4 @@ export const beveragesMenu: Menu = {
   ],
 };
 
-export const allMenus: Menu[] = [mainMenu, happyHourMenu, beveragesMenu];
+export const allMenus: Menu[] = [mainMenu, eveningMenu, happyHourMenu, beveragesMenu];

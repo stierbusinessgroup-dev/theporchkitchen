@@ -5,7 +5,7 @@ import Footer from '../components/Footer.astro';
 import MenuList from '../components/MenuList.astro';
 import Texture from '../components/Texture.astro';
 import { site } from '../data/site';
-import { mainMenu, happyHourMenu, beveragesMenu, DIET_LABELS } from '../data/menu';
+import { mainMenu, eveningMenu, happyHourMenu, beveragesMenu, DIET_LABELS } from '../data/menu';
 
 const legend = Object.entries(DIET_LABELS) as [keyof typeof DIET_LABELS, string][];
 ---
@@ -41,18 +41,26 @@ const legend = Object.entries(DIET_LABELS) as [keyof typeof DIET_LABELS, string]
 
   <section class="menu-body">
     <div class="wrap">
+      <h2 class="menu-title">{mainMenu.title}</h2>
       <MenuList menu={mainMenu} showServed />
     </div>
   </section>
 
   <section class="menu-body alt">
     <div class="wrap">
+      <h2 class="menu-title">{eveningMenu.title}</h2>
+      <MenuList menu={eveningMenu} showServed />
+    </div>
+  </section>
+
+  <section class="menu-body">
+    <div class="wrap">
       <h2 class="menu-title">{happyHourMenu.title}</h2>
       <MenuList menu={happyHourMenu} showServed />
     </div>
   </section>
 
-  <section class="menu-body" id="beverages">
+  <section class="menu-body alt" id="beverages">
     <div class="wrap">
       <h2 class="menu-title">{beveragesMenu.title}</h2>
       <MenuList menu={beveragesMenu} />

@@ -48,11 +48,11 @@ export const faqs: Faq[] = [
   },
   {
     q: 'What sandwiches do you serve?',
-    a: 'Our sandwiches include the signature Turkey Pesto (house-roasted turkey and basil pesto, called “the best turkey sandwich” on Yelp), the Jambon Beurre (ham and sweet butter on baguette), the Chèvre Tomate (goat cheese, tomato, and herbes de Provence), and a rotating Daily Sandwich from chef Lisa. Menus change with the season.',
+    a: 'Our sandwiches include the signature Turkey Pesto (house-roasted turkey and basil pesto, called “the best turkey sandwich” on Yelp), the Jambon Beurre (ham, sweet butter and arugula), the Chèvre Tomate (goat cheese, tomato, arugula and herbes de Provence), and a rotating Daily Sandwich from chef Lisa. Menus change with the season.',
   },
   {
     q: 'What salads do you have?',
-    a: 'You’ll find the Butternut Squash Salad, the Beet Salad, a classic Caesar (add roasted chicken), and our Savory Grain Bowl. Salads rotate with the season and the day’s market.',
+    a: 'You’ll find the Butternut Squash Salad, the Beet Salad, a classic Caesar (add roasted chicken), our Savory Grain Bowl, and a vegetarian Quinoa Bowl. Salads rotate with the season and the day’s market.',
   },
   {
     q: 'Do you have vegan, vegetarian, and gluten-free options?',
